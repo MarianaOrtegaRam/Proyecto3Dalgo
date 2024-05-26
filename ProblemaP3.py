@@ -20,8 +20,9 @@ def pancake(l:list)->list:
                 flips.append(-mayor_desorganizado%n)
                 l = flip_arriba_a_correcto(l)
     
-    return flips 
+    return flips,l
         
+
         
 def verificar_organizada(l:list)->int:
     n = len(l)
@@ -125,15 +126,24 @@ def procesar_casos(archivo):
         numero_casos = int(f.readline().strip())
         for __ in range(numero_casos):
             case_list = list(map(int, f.readline().strip().split()))
-            flips = pancake(case_list)
+            
+            #print("caso")
+            #print(case_list)
+            flips, lista_org = pancake(case_list)
+            #print("ya organizado")
+            #print(lista_org)
             if len(flips) == 0:
-                print("ORDENADO")
+                    print("ORDENADO")
+                    print("_____________")
             else:
                 cadena = ' '.join(map(str, flips))
                 print(cadena)
+                print(len(flips))
+                print("_____________")
 
             if time.time() - tiempo_ahora > 150:
                 break
+            
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Uso: python script.py <archivo_entrada>")
