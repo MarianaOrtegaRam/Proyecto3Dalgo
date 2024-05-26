@@ -119,20 +119,25 @@ def flip_arriba_a_correcto(l:list)->list:
     
 
 
-def procesar_casos():
+def procesar_casos(archivo):
     tiempo_ahora = time.time()
-    numero_casos = int(sys.stdin.readline())
-    for __ in range(numero_casos):
-        case_list = list(map(int, sys.stdin.readline().split()))
-        np = 0
-        sp = 0
-        for n in case_list:
-            if n % 2 == 0 :
-                np=np+1
-                sp = sp+n
-        print(np,sp)
-        if time.time() - tiempo_ahora > 150:
-            break
+    with open(archivo, 'r') as f:
+        numero_casos = int(f.readline().strip())
+        for __ in range(numero_casos):
+            case_list = list(map(int, f.readline().strip().split()))
+            flips = pancake(case_list)
+            if len(flips) == 0:
+                print("ORDENADO")
+            else:
+                cadena = ' '.join(map(str, flips))
+                print(cadena)
+
+            if time.time() - tiempo_ahora > 150:
+                break
 if __name__ == "__main__":
-    procesar_casos()
+    if len(sys.argv) != 2:
+        print("Uso: python script.py <archivo_entrada>")
+    else:
+        archivo_entrada = sys.argv[1]
+        procesar_casos(archivo_entrada)
 
