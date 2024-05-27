@@ -24,7 +24,8 @@ cd path\Proyecto3Dalgo
 
 Ahora bien, ya estando en la terminal, ejecuta la siguiente linea
 
-python ProblemaP3.py x.in
+python ProblemaP3.py x.in y.out
 
 donde x.in es el documento que adjuntó inicialmente a la carpeta Proyecto3Dalgo
+donde y.out es el docmento que genera las respuestas del .in, la y puede ser remplazada por culquier conjunto de letras
 
