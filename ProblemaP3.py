@@ -120,34 +120,33 @@ def flip_arriba_a_correcto(l:list)->list:
     
 
 
-def procesar_casos(archivo):
+def procesar_casos(archivo_entrada, archivo_salida):
     tiempo_ahora = time.time()
-    with open(archivo, 'r') as f:
+    with open(archivo_entrada, 'r') as f:
         numero_casos = int(f.readline().strip())
+        resultados = []
         for __ in range(numero_casos):
             case_list = list(map(int, f.readline().strip().split()))
-            
-            #print("caso")
-            #print(case_list)
             flips, lista_org = pancake(case_list)
-            #print("ya organizado")
-            #print(lista_org)
             if len(flips) == 0:
-                    print("ORDENADO")
-                    print("_____________")
+                resultados.append("ORDENADO")
             else:
                 cadena = ' '.join(map(str, flips))
-                print(cadena)
-                print(len(flips))
-                print("_____________")
+                resultados.append(f"{cadena}\n{len(flips)}")
+            resultados.append("_____________")
 
             if time.time() - tiempo_ahora > 150:
                 break
-            
+    
+    with open(archivo_salida, 'w') as f:
+        for resultado in resultados:
+            f.write(f"{resultado}\n")
+
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Uso: python script.py <archivo_entrada>")
+    if len(sys.argv) != 3:
+        print("Uso: python script.py <archivo_entrada> <archivo_salida>")
     else:
         archivo_entrada = sys.argv[1]
-        procesar_casos(archivo_entrada)
+        archivo_salida = sys.argv[2]
+        procesar_casos(archivo_entrada, archivo_salida)
 
