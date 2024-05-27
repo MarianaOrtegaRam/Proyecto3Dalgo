@@ -132,8 +132,7 @@ def procesar_casos(archivo_entrada, archivo_salida):
                 resultados.append("ORDENADO")
             else:
                 cadena = ' '.join(map(str, flips))
-                resultados.append(f"{cadena}\n{len(flips)}")
-            resultados.append("_____________")
+                resultados.append(f"{cadena}")
 
             if time.time() - tiempo_ahora > 150:
                 break
