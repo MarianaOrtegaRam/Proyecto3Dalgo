@@ -27,5 +27,6 @@ def numeros_faltantes(lista, inicio, fin):
     # Convertir el conjunto de faltantes a una lista y ordenarla
     return sorted(list(faltantes))
 
+
 B = generate_string(1, 1000)
 print(B)
