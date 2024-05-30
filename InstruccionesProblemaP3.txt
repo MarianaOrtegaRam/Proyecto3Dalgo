@@ -1,7 +1,11 @@
+# Mariana Ortega - 202211233
+# Paulina Arrazola - 202020631
+
+
 --------------------------------------------------
 Especificación del problema de Proyecto3
 --------------------------------------------------
-Para poder correr el problema, dentro de la carpeta Proyecto3Dalgo, ingrese in archivo .in
+Para poder correr el problema, dentro de la carpeta proyectoDalgoP3, ingrese in archivo .in
 por ejemplo, el siguiente archivo P0.in es de la siguiente manera y está dentro de la carpeta:
 
 6
@@ -12,7 +16,7 @@ por ejemplo, el siguiente archivo P0.in es de la siguiente manera y está dentro
 3 1 5 2 4 6
 5 4 3 2 1
 
-Ahora bien para correr el caso, en la terminal de este ProyectoDAlgo
+Ahora bien para correr el caso, en la terminal de este proyectoDalgoP3
 
 Abrir una Terminal o Símbolo del Sistema: En Windows, puedes abrir el 
 símbolo del sistema (cmd) o PowerShell. En macOS o Linux, abre una terminal.
@@ -20,12 +24,12 @@ símbolo del sistema (cmd) o PowerShell. En macOS o Linux, abre una terminal.
 Navegar al Directorio del Script: Usa el comando cd para cambiar al directorio 
 donde guardaste la carpeta Proyecto3Dalgo Por ejemplo:
 
-cd path\Proyecto3Dalgo
+cd path\proyectoDalgoP3
 
 Ahora bien, ya estando en la terminal, ejecuta la siguiente linea
 
 python ProblemaP3.py x.in y.out
 
-donde x.in es el documento que adjuntó inicialmente a la carpeta Proyecto3Dalgo
+donde x.in es el documento que adjuntó inicialmente a la carpeta proyectoDalgoP3
 donde y.out es el docmento que genera las respuestas del .in, la y puede ser remplazada por culquier conjunto de letras
 

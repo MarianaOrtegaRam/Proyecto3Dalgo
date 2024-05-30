@@ -1,3 +1,6 @@
+# Mariana Ortega - 202211233
+# Paulina Arrazola - 202020631
+
 import random
 
 

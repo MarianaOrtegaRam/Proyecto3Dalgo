@@ -1,15 +1,26 @@
+# Mariana Ortega - 202211233
+# Paulina Arrazola - 202020631
+
 import sys
 import time
 
 def pancake(l:list)->list:
+    #crea la lista donde se van a guardar los flips que se deben hacer 
     flips = []
+    #cantidad de panqueques en la pila
     n = len(l)
+    #centinela que indica si ya la pila de panqueques esta ordenada 
+    #organizada es donde para l = [n,n-1,n-2...1]
     organizada = False
+    #se ejecutará el ciclo siempre y cuando siga desogornizada la lista
     while organizada == False:
+        #busca el mayor elemento que no esté en su posición
         mayor_desorganizado = verificar_organizada(l)
+        #si es cero, no hya, entonces ya está organizado y termina
         if mayor_desorganizado ==0: 
             organizada = True
         else:
+            #ya se cual es el elemnto, pero debo buscar donde está para hacer ahí el 1° flip
             pos_mayor_desorganzido = buscar(l, mayor_desorganizado)
             if pos_mayor_desorganzido == -1:
                 l= flip_arriba_a_correcto(l)   
@@ -29,8 +40,24 @@ def verificar_organizada(l:list)->int:
     i = 0
     organizado = True
     mayor_desor = 0
+    #Asumo que la lista está ya organizada, y encuentro el mayor elemento que esté desorganizado
+    
+    #tomando en cuenta que la lista organizada quiere decir que está de la siguiente manera con estas posiciones
+
+    # la lista :  [  n  ,  n-1  ,  n-2  , ... ,  1  ]
+    #                |      |       |            |
+    # las pos:      -n   -(n-1)  -(n-2)         -1
+    # por eso el ciclo, la variable a va de izquierda a derecha (0<=i<n) así
+    # las pos:     -n+0   -n+1    -n+2        -n+(n-1)
+
+
     while i < n and organizado == True:
+        #la estoy recorriendo de izquierda a derecha tomando las posiciones desde -n hasta -1
+        #entonces a va de -n a -1 en el peor de los casos 
         a = -n + i
+        #La explicación de arriba, el mayor desordenado sería el primero que no cumpla la condición 
+        #que en la posición a debe estar el panqueque con valor = |a|
+        #por ejemplo: a = -5+0, l[a]
         if l[a] != abs(a):
             mayor_desor = abs(a)
             organizado = False
@@ -39,15 +66,14 @@ def verificar_organizada(l:list)->int:
     return mayor_desor
 
 def buscar(l:list, desorganizado:int) ->int:
+    
     pos = 0
     i = 0
     encontrado = False
     while i < desorganizado and encontrado == False:
-        a = -desorganizado+i
-        valor = l[a]
-        #print(a)
-        #print(valor)
-        #print("___________")
+        #este es el mismo a de antes, pero inicia desde el elemento desorganizado
+        #porque no es necesario buscarlo desde el inicio de la lista, porque esas
+        #posiciones ya están organizadas
         if l[-desorganizado+i] == desorganizado:
             pos = -desorganizado + i
             encontrado = True
@@ -84,6 +110,8 @@ def flip_mayor_arriba(l: list, pos: int)->list:
     
     flipeada = l[-len(l):pos]
     for i in range(1, abs(pos)+1) :
+        #voy sacando del final hasta la posicion del valor desorganizado, y metiendo a flipeada
+        #esto para que se agreguen al contrario del orden en el que están
         valor = l[-i]
         flipeada.append(valor)
     return flipeada
@@ -112,6 +140,8 @@ def flip_arriba_a_correcto(l:list)->list:
     #por ejemplo l está así:  [6, 5, 2, 1, 3, 4], organizada es  [6, 5]
     organizada = l[-len(l):-mayor_desorganizado]
     
+    #voy sacando del final hasta la posicion del valor desorganizado, y metiendo a flipeada
+    #esto para que se agreguen al contrario del orden en el que están, y ya quedaría el mayor desorganizado organizado 
     for i in range(1, mayor_desorganizado+1) :
         valor = l[-i]
         organizada.append(valor)
